@@ -1,0 +1,22 @@
+{
+  "name": "@repo/tailwindcss-config",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./dist/tailwind.config.js",
+    "./mjs": "./dist/tailwind.config.mjs"
+  },
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "tailwindcss": "^3.4.11",
+    "tsup": "^8.2.4"
+  },
+  "peerDependencies": {
+    "tailwindcss": "^3.4.11"
+  }
+}
