@@ -1,14 +1,24 @@
 :root {
   --color-primary: #7f56d9;
   --color-border: #d0d5dd;
+  --color-text-primary: #101828;
+  --color-text-tertiary: #475467;
 
+  --spacing-none: 0rem;
   --spacing-xs: 0.25rem;
   --spacing-md: 0.5rem;
   --spacing-lg: 0.75rem;
   --spacing-xl: 1rem;
+  --spacing-2xl: 1.25rem;
+  --spacing-3xl: 1.5rem;
 
   --radius-md: 0.5rem;
 
   --font-size-sm: 0.875rem;
   --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+
+  --line-height-sm: 1.25rem;
+  --line-height-md: 1.5rem;
+  --line-height-lg: 1.75rem;
 }

@@ -1,3 +1,5 @@
+import "./card.scss";
+
 import clsx from "clsx";
 
 import { PCardProps } from "./types.js";

@@ -5,7 +5,8 @@
   "type": "module",
   "exports": {
     "./Button": "./src/components/Button/index.tsx",
-    "./Card": "./src/components/Card/index.tsx"
+    "./Card": "./src/components/Card/index.tsx",
+    "./Dialog": "./src/components/Dialog/index.tsx"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
@@ -26,6 +27,7 @@
     "typescript": "^5.6.2"
   },
   "dependencies": {
+    "@headlessui/react": "^2.1.8",
     "react": "^18.3.1"
   }
 }

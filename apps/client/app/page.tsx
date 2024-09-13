@@ -1,10 +1,14 @@
 "use client";
 
 import { Button } from "@repo/ui/Button";
+import { Dialog } from "@repo/ui/Dialog";
 import Logo from "app/assets/img/icons/next.svg";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Home() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="flex flex-col min-h-lvh">
       <header className="py-4 bg-white border-solid border-0 border-b border-gray-200">
@@ -22,7 +26,24 @@ export default function Home() {
           </ol>
           <div className="space-x-2">
             <Button>Default</Button>
-            <Button variant="primary">Primary</Button>
+            <Button
+              variant="primary"
+              onClick={() => {
+                setIsOpen(true);
+              }}
+            >
+              Primary
+            </Button>
+            <Dialog
+              isOpen={isOpen}
+              onClose={() => {
+                setIsOpen(false);
+              }}
+              title="Dialog Title"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            >
+              Test
+            </Dialog>
           </div>
         </div>
       </main>
