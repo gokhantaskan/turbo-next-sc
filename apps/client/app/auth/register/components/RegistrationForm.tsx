@@ -1,7 +1,8 @@
 "use client";
 
-import { Field, Input, Label } from "@headlessui/react";
+import { Input, Label } from "@headlessui/react";
 import { Button } from "@repo/ui/Button";
+import { FormField } from "@repo/ui/FormField";
 
 export const RegistrationForm: React.FC = () => {
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -13,21 +14,28 @@ export const RegistrationForm: React.FC = () => {
       onSubmit={handleSubmit}
       className="space-y-4"
     >
-      <Field className="flex flex-col gap-1">
-        <Label className="text-sm font-medium">Email</Label>
+      <FormField
+        label="Email"
+        required
+      >
         <Input
           type="email"
+          placeholder="Enter your email"
           required
         />
-      </Field>
-      <Field className="flex flex-col gap-1">
-        <Label className="text-sm font-medium">Password</Label>
+      </FormField>
+      <FormField
+        label="Password"
+        helperText="Must be at least 6 characters."
+        required
+      >
         <Input
           type="password"
+          placeholder="Create a password"
           required
           minLength={6}
         />
-      </Field>
+      </FormField>
 
       <Button
         className="w-full"

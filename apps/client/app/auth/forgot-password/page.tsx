@@ -1,7 +1,8 @@
 "use client";
 
-import { Field, Input, Label } from "@headlessui/react";
+import { Field, Input } from "@headlessui/react";
 import { Button } from "@repo/ui/Button";
+import { FormField } from "@repo/ui/FormField";
 import Link from "next/link";
 
 export default function ForgotPasswordPage() {
@@ -20,13 +21,16 @@ export default function ForgotPasswordPage() {
         onSubmit={handleSubmit}
         className="space-y-4"
       >
-        <Field className="flex flex-col gap-1">
-          <Label>Email</Label>
+        <FormField
+          label="Email"
+          required
+        >
           <Input
             type="email"
-            id="email"
+            placeholder="Enter your email"
+            required
           />
-        </Field>
+        </FormField>
         <Button
           className="w-full"
           variant="primary"

@@ -1,4 +1,4 @@
-import "./auth.scss";
+import "./assets/styles/auth.scss";
 
 import Logo from "assets/img/icons/next.svg";
 

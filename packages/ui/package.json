@@ -4,10 +4,11 @@
   "private": true,
   "type": "module",
   "exports": {
+    "./variables.scss": "./src/assets/styles/variables.scss",
     "./Button": "./src/components/Button/index.tsx",
     "./Card": "./src/components/Card/index.tsx",
     "./Dialog": "./src/components/Dialog/index.tsx",
-    "./variables.scss": "./src/assets/styles/variables.scss"
+    "./FormField": "./src/components/FormField/index.tsx"
   },
   "files": [
     "./src"
