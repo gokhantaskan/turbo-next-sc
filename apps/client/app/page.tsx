@@ -18,22 +18,37 @@ export default function Home() {
       </header>
       <main className="flex-1">
         <div className="container py-4">
-          <ol>
-            <li>
-              Get started by editing <code>app/page.tsx</code>
-            </li>
-            <li>Save and see your changes instantly.</li>
-          </ol>
-          <div className="space-x-2">
-            <Button>Default</Button>
-            <Button
-              variant="primary"
-              onClick={() => {
-                setIsOpen(true);
-              }}
-            >
-              Primary
-            </Button>
+          <div>
+            <div className="space-x-2">
+              <Button>Default</Button>
+              <Button variant="error">Error</Button>
+              <Button
+                variant="primary"
+                onClick={() => {
+                  setIsOpen(true);
+                }}
+              >
+                Primary
+              </Button>
+            </div>
+            <div className="space-x-2 mt-3">
+              <Button disabled>Default</Button>
+              <Button
+                disabled
+                variant="error"
+              >
+                Error
+              </Button>
+              <Button
+                disabled
+                variant="primary"
+                onClick={() => {
+                  setIsOpen(true);
+                }}
+              >
+                Primary
+              </Button>
+            </div>
             <Dialog
               isOpen={isOpen}
               onClose={() => {
@@ -41,6 +56,23 @@ export default function Home() {
               }}
               title="Dialog Title"
               description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+              actions={
+                <>
+                  <Button variant="primary">Save</Button>
+                  <Button onClick={() => setIsOpen(false)}>Cancel</Button>
+                  <Button
+                    variant="error"
+                    style={{ marginInlineEnd: "auto" }}
+                    onClick={() => {
+                      if (confirm("Are you sure?")) {
+                        setIsOpen(false);
+                      }
+                    }}
+                  >
+                    Delete
+                  </Button>
+                </>
+              }
             >
               Test
             </Dialog>

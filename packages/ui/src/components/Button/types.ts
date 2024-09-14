@@ -1,10 +1,10 @@
 import type { ClassValue } from "clsx";
-import type { MouseEventHandler, ReactNode } from "react";
+import type { ButtonHTMLAttributes, MouseEventHandler, ReactNode } from "react";
 
-export type PButtonProps = {
+export type PButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: ReactNode;
   className?: ClassValue;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   size?: "sm" | "md" | "lg" | "xl";
-  variant?: "default" | "primary";
+  variant?: "default" | "primary" | "error";
 };

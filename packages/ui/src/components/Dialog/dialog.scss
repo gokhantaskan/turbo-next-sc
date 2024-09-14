@@ -53,6 +53,14 @@
     padding: var(--spacing-xl, 1rem) var(--spacing-3xl, 1.5rem);
   }
 
+  &__actions {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 0.5rem;
+    padding: var(--spacing-3xl, 1.5rem);
+    padding-block-start: 0;
+  }
+
   &__close-button {
     // position: absolute;
     // top: 0.75rem;

@@ -6,13 +6,14 @@ import clsx from "clsx";
 
 import { PButtonProps } from "./types.js";
 
-export const Button = ({
+export const Button: React.FC<PButtonProps> = ({
   children,
   className,
   onClick,
   size = "md",
   variant = "default",
-}: PButtonProps) => {
+  ...rest
+}) => {
   return (
     <button
       className={clsx(
@@ -22,6 +23,7 @@ export const Button = ({
         className
       )}
       onClick={onClick}
+      {...rest}
     >
       {children}
     </button>
