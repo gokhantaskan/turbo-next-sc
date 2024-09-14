@@ -12,6 +12,7 @@ export const Button: React.FC<PButtonProps> = ({
   onClick,
   size = "md",
   variant = "default",
+  type = "button",
   ...rest
 }) => {
   return (
@@ -22,6 +23,7 @@ export const Button: React.FC<PButtonProps> = ({
         variant !== "default" ? `p-button--${variant}` : "",
         className
       )}
+      type={type}
       onClick={onClick}
       {...rest}
     >

@@ -7,4 +7,5 @@ export type PButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   onClick?: MouseEventHandler<HTMLButtonElement>;
   size?: "sm" | "md" | "lg" | "xl";
   variant?: "default" | "primary" | "error";
+  type?: "submit" | "button";
 };

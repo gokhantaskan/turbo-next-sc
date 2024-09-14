@@ -28,12 +28,11 @@ export const FormField: React.FC<PFormFieldProps> = ({
 
       <div className="p-form-field__wrap">{children}</div>
 
-      {errorMessage ||
-        (helperText && (
-          <Description className={clsx("p-form-field__description")}>
-            {errorMessage || helperText}
-          </Description>
-        ))}
+      {(errorMessage || helperText) && (
+        <Description className={clsx("p-form-field__description", errorMessage && "is-error")}>
+          {errorMessage || helperText}
+        </Description>
+      )}
     </Field>
   );
 };

@@ -1,6 +1,6 @@
 "use client";
 
-import { Input, Label } from "@headlessui/react";
+import { Input } from "@headlessui/react";
 import { Button } from "@repo/ui/Button";
 import { FormField } from "@repo/ui/FormField";
 

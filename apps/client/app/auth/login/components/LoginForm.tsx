@@ -5,35 +5,52 @@ import { Button } from "@repo/ui/Button";
 import { FormField } from "@repo/ui/FormField";
 import Link from "next/link";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+
+type LoginFormTypes = {
+  email: string;
+  password: string;
+};
 
 export const LoginForm: React.FC = () => {
-  const [enabled, setEnabled] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginFormTypes>();
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  async function onSubmit(data: LoginFormTypes) {
+    console.log(data);
   }
 
   return (
     <form
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmit(onSubmit)}
       className="space-y-4"
     >
-      <FormField label="Email">
+      <FormField
+        label="Email"
+        errorMessage={errors.email?.message}
+      >
         <Input
+          className={errors.email && "is-error"}
           type="email"
           placeholder="Enter your email"
-          required
+          {...register("email", { required: "This field is required" })}
         />
       </FormField>
       <FormField
         className="relative"
         label="Password"
+        errorMessage={errors.password?.message}
       >
         <Input
+          className={errors.password && "is-error"}
           type="password"
           placeholder="Enter your password"
-          required
           minLength={6}
+          {...register("password", { required: "This field is required" })}
         />
         <Link
           className="absolute top-0 right-0 text-sm"
@@ -44,8 +61,8 @@ export const LoginForm: React.FC = () => {
       </FormField>
       <Field className="flex items-center gap-1">
         <Checkbox
-          checked={enabled}
-          onChange={setEnabled}
+          checked={rememberMe}
+          onChange={setRememberMe}
           className="group block size-4 rounded border border-solid bg-white data-[checked]:bg-primary-500 data-[checked]:border-primary-500"
         >
           <svg
@@ -67,6 +84,7 @@ export const LoginForm: React.FC = () => {
       <Button
         className="w-full"
         variant="primary"
+        type="submit"
       >
         Login
       </Button>
