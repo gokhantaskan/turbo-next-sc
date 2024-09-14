@@ -20,6 +20,24 @@ export default function Home() {
         <div className="container py-4">
           <div>
             <div className="space-x-2">
+              <Button size="lg">Default</Button>
+              <Button
+                size="lg"
+                variant="error"
+              >
+                Error
+              </Button>
+              <Button
+                size="lg"
+                variant="primary"
+                onClick={() => {
+                  setIsOpen(true);
+                }}
+              >
+                Primary
+              </Button>
+            </div>
+            <div className="space-x-2 mt-3">
               <Button>Default</Button>
               <Button variant="error">Error</Button>
               <Button
@@ -32,15 +50,15 @@ export default function Home() {
               </Button>
             </div>
             <div className="space-x-2 mt-3">
-              <Button disabled>Default</Button>
+              <Button size="sm">Default</Button>
               <Button
-                disabled
+                size="sm"
                 variant="error"
               >
                 Error
               </Button>
               <Button
-                disabled
+                size="sm"
                 variant="primary"
                 onClick={() => {
                   setIsOpen(true);
