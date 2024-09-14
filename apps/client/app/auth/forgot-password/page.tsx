@@ -34,6 +34,7 @@ export default function ForgotPasswordPage() {
         <Button
           className="w-full"
           variant="primary"
+          type="submit"
         >
           Send Email Instructions
         </Button>

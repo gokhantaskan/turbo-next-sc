@@ -40,6 +40,7 @@ export const RegistrationForm: React.FC = () => {
       <Button
         className="w-full"
         variant="primary"
+        type="submit"
       >
         Get Started
       </Button>
