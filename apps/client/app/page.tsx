@@ -2,7 +2,7 @@
 
 import { Button } from "@repo/ui/Button";
 import { Dialog } from "@repo/ui/Dialog";
-import Logo from "app/assets/img/icons/next.svg";
+import Logo from "assets/img/icons/next.svg";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -19,46 +19,10 @@ export default function Home() {
       <main className="flex-1">
         <div className="container py-4">
           <div>
-            <div className="space-x-2">
-              <Button size="lg">Default</Button>
-              <Button
-                size="lg"
-                variant="error"
-              >
-                Error
-              </Button>
-              <Button
-                size="lg"
-                variant="primary"
-                onClick={() => {
-                  setIsOpen(true);
-                }}
-              >
-                Primary
-              </Button>
-            </div>
             <div className="space-x-2 mt-3">
               <Button>Default</Button>
               <Button variant="error">Error</Button>
               <Button
-                variant="primary"
-                onClick={() => {
-                  setIsOpen(true);
-                }}
-              >
-                Primary
-              </Button>
-            </div>
-            <div className="space-x-2 mt-3">
-              <Button size="sm">Default</Button>
-              <Button
-                size="sm"
-                variant="error"
-              >
-                Error
-              </Button>
-              <Button
-                size="sm"
                 variant="primary"
                 onClick={() => {
                   setIsOpen(true);

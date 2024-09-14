@@ -1,0 +1,11 @@
+.auth-layout {
+  @apply bg-white min-h-dvh grid lg:grid-cols-2;
+
+  .content-wrapper {
+    @apply text-start w-full max-w-md space-y-6;
+
+    header {
+      @apply text-center space-y-1;
+    }
+  }
+}
