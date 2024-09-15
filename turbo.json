@@ -20,6 +20,7 @@
     "lint": {},
     "lint:fix": {},
     "lint:root": {},
+    "type-check": {},
     "format": {},
     "lf": {}
   }
