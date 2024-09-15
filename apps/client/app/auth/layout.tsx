@@ -2,6 +2,8 @@ import "./assets/styles/auth.scss";
 
 import Logo from "assets/img/icons/next.svg";
 
+import { AuthFooter } from "./components/Footer";
+
 export default function AuthLayout({
   children,
 }: Readonly<{
@@ -15,7 +17,7 @@ export default function AuthLayout({
           <Logo className="h-6" />
         </div>
         <div className="flex flex-col items-center justify-center flex-1 p-4">{children}</div>
-        <footer className="p-4 text-sm text-center">&copy; App - {new Date().getFullYear()}</footer>
+        <AuthFooter />
       </div>
       {/* Right */}
       <div className="h-full bg-gray-100 max-lg:hidden"></div>
