@@ -22,11 +22,9 @@ export const AppNavigation = (): JSX.Element => {
           <Button
             size="sm"
             disabled={false}
-            onClick={() => {
-              router.push(ENDPOINTS.SignIn);
-            }}
+            asChild
           >
-            Sign In
+            <Link href={ENDPOINTS.SignIn}>Sign In</Link>
           </Button>
         </div>
       </div>

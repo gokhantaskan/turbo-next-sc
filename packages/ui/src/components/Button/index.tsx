@@ -2,18 +2,19 @@
 
 import "./button.scss";
 
-import type { ClassValue } from "clsx";
+import { Slot } from "@radix-ui/react-slot";
 import clsx from "clsx";
 import type { ButtonHTMLAttributes } from "react";
 
-export interface PButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "className"> {
-  className?: ClassValue;
+export interface PButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  asChild?: boolean;
   size?: "sm" | "md" | "lg" | "xl";
   variant?: "primary" | "error";
   type?: "submit" | "button";
 }
 
 export const Button = ({
+  asChild,
   children,
   className,
   size = "md",
@@ -21,8 +22,10 @@ export const Button = ({
   type = "button",
   ...rest
 }: PButtonProps): JSX.Element => {
+  const Comp = asChild ? Slot : "button";
+
   return (
-    <button
+    <Comp
       className={clsx(
         "p-button",
         `p-button--${size}`,
@@ -33,6 +36,6 @@ export const Button = ({
       {...rest}
     >
       {children}
-    </button>
+    </Comp>
   );
 };
