@@ -1,11 +1,19 @@
 import "./form-field.scss";
 
-import { Description, Field, Label } from "@headlessui/react";
-import clsx from "clsx";
+import { Description, Field, type FieldProps, Label } from "@headlessui/react";
+import clsx, { ClassValue } from "clsx";
+import { ReactNode } from "react";
 
-import { PFormFieldProps } from "./types.js";
+export interface PFormFieldProps extends Omit<FieldProps, "className" | "children"> {
+  className?: ClassValue;
+  children?: ReactNode;
+  label?: string;
+  required?: boolean;
+  helperText?: string;
+  errorMessage?: string;
+}
 
-export const FormField: React.FC<PFormFieldProps> = ({
+export const FormField = ({
   className,
   children,
   label,
@@ -13,7 +21,7 @@ export const FormField: React.FC<PFormFieldProps> = ({
   helperText,
   errorMessage,
   ...rest
-}) => {
+}: PFormFieldProps): JSX.Element => {
   return (
     <Field
       className={clsx("p-form-field", errorMessage && "p-form-field__has-error", className)}
