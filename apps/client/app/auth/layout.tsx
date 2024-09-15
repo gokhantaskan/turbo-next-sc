@@ -14,8 +14,8 @@ export default function AuthLayout({
         <div className="p-4">
           <Logo className="h-6" />
         </div>
-        <div className="p-4 flex flex-1 flex-col items-center justify-center">{children}</div>
-        <footer className="p-4">&copy; App</footer>
+        <div className="flex flex-col items-center justify-center flex-1 p-4">{children}</div>
+        <footer className="p-4 text-sm text-center">&copy; App - {new Date().getFullYear()}</footer>
       </div>
       {/* Right */}
       <div className="h-full bg-gray-100 max-lg:hidden"></div>
