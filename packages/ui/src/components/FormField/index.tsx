@@ -16,14 +16,11 @@ export const FormField: React.FC<PFormFieldProps> = ({
 }) => {
   return (
     <Field
-      className={clsx("p-form-field", className)}
+      className={clsx("p-form-field", errorMessage && "p-form-field__has-error", className)}
       {...rest}
     >
       {label && (
-        <Label className="p-form-field__label">
-          {label}
-          {required && <span>*</span>}
-        </Label>
+        <Label className={clsx("p-form-field__label", required && "is-required")}>{label}</Label>
       )}
 
       <div className="p-form-field__wrap">{children}</div>

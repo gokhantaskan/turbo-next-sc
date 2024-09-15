@@ -1,26 +1,28 @@
 "use client";
 
 import { Checkbox, Field, Input, Label } from "@headlessui/react";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@repo/ui/Button";
 import { FormField } from "@repo/ui/FormField";
 import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-type LoginFormTypes = {
-  email: string;
-  password: string;
-};
+import { ENDPOINTS } from "@/lib/constants/endpoints";
 
-export const LoginForm: React.FC = () => {
+import { SignInFormSchema, type SignInFormSchemaType } from "../schema/signInSchema";
+
+export const SignInForm: React.FC = () => {
   const [rememberMe, setRememberMe] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginFormTypes>();
+  } = useForm<SignInFormSchemaType>({
+    resolver: zodResolver(SignInFormSchema),
+  });
 
-  async function onSubmit(data: LoginFormTypes) {
+  async function onSubmit(data: SignInFormSchemaType) {
     console.log(data);
   }
 
@@ -28,8 +30,10 @@ export const LoginForm: React.FC = () => {
     <form
       onSubmit={handleSubmit(onSubmit)}
       className="space-y-4"
+      noValidate
     >
       <FormField
+        required
         label="Email"
         errorMessage={errors.email?.message}
       >
@@ -37,11 +41,12 @@ export const LoginForm: React.FC = () => {
           className={errors.email && "is-error"}
           type="email"
           placeholder="Enter your email"
-          {...register("email", { required: "This field is required" })}
+          {...register("email", { required: true })}
         />
       </FormField>
       <FormField
         className="relative"
+        required
         label="Password"
         errorMessage={errors.password?.message}
       >
@@ -50,11 +55,11 @@ export const LoginForm: React.FC = () => {
           type="password"
           placeholder="Enter your password"
           minLength={6}
-          {...register("password", { required: "This field is required" })}
+          {...register("password", { required: true })}
         />
         <Link
           className="absolute top-0 right-0 text-sm"
-          href="/auth/forgot-password"
+          href={ENDPOINTS.ForgotPassword}
         >
           Forgot password?
         </Link>

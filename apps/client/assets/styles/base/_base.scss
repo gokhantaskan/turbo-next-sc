@@ -11,7 +11,7 @@
 body {
   background-color: var(--color-gray-50);
   color: var(--color-gray-900);
-  @apply font-sans;
+  font-family: var(--font-geist-sans);
 }
 
 :placeholder-shown {
@@ -28,13 +28,3 @@ a {
   }
 }
 
-input {
-  width: 100%;
-  padding: var(--spacing-md, 0.5rem) var(--spacing-lg, 0.75rem);
-  border-radius: var(--radius-md, 0.5rem);
-  @apply bg-white border;
-
-  &.is-error {
-    @apply border-error-300;
-  }
-}

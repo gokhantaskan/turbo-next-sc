@@ -1,13 +1,32 @@
 "use client";
 
 import { Input } from "@headlessui/react";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@repo/ui/Button";
 import { FormField } from "@repo/ui/FormField";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+
+import { ENDPOINTS } from "@/lib/constants/endpoints";
+
+const ForgotPasswordFormSchema = z.object({
+  email: z.string().email(),
+});
+
+type ForgotPasswordFormSchemaType = z.infer<typeof ForgotPasswordFormSchema>;
 
 export default function ForgotPasswordPage() {
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ForgotPasswordFormSchemaType>({
+    resolver: zodResolver(ForgotPasswordFormSchema),
+  });
+
+  async function onSubmit(data: ForgotPasswordFormSchemaType) {
+    console.log(data);
   }
 
   return (
@@ -18,17 +37,19 @@ export default function ForgotPasswordPage() {
       </header>
 
       <form
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmit(onSubmit)}
         className="space-y-4"
       >
         <FormField
           label="Email"
           required
+          errorMessage={errors.email?.message}
         >
           <Input
+            className={errors.email && "is-error"}
             type="email"
             placeholder="Enter your email"
-            required
+            {...register("email", { required: true })}
           />
         </FormField>
         <Button
@@ -36,12 +57,12 @@ export default function ForgotPasswordPage() {
           variant="primary"
           type="submit"
         >
-          Send Email Instructions
+          Send Instructions
         </Button>
       </form>
 
       <p className="text-sm text-center">
-        <Link href="/auth/login">Back to login</Link>
+        <Link href={ENDPOINTS.SignIn}>Back to login</Link>
       </p>
     </div>
   );

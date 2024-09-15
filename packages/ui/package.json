@@ -10,9 +10,6 @@
     "./Dialog": "./src/components/Dialog/index.tsx",
     "./FormField": "./src/components/FormField/index.tsx"
   },
-  "files": [
-    "./src"
-  ],
   "scripts": {
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "pnpm lint --fix",

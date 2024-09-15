@@ -10,6 +10,13 @@
     font-weight: 500;
     font-size: var(--font-size-sm);
     line-height: var(--line-height-sm);
+
+    &.is-required {
+      &::after {
+        content: " *";
+        color: var(--color-primary);
+      }
+    }
   }
 
   &__description {
