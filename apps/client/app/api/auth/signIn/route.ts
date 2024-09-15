@@ -1,5 +1,12 @@
 import { NextResponse } from "next/server";
 
+import { User } from "@/lib/types/user";
+
+type AuthUser = User & {
+  token: string;
+  refreshToken: string;
+};
+
 export async function POST(request: Request) {
   try {
     const { email, password } = await request.json();
@@ -23,8 +30,8 @@ export async function POST(request: Request) {
     }
 
     // Extract user data, excluding tokens
-    const { token, refreshToken, ...user } = data;
-    const res = NextResponse.json({ ...user }, { status: 200 });
+    const { token, refreshToken, ...user }: AuthUser = data;
+    const res = NextResponse.json(user, { status: 200 });
 
     res.cookies.set("accessToken", token, {
       httpOnly: true,
@@ -40,7 +47,7 @@ export async function POST(request: Request) {
         secure: process.env.NODE_ENV === "production",
         sameSite: "strict",
         path: "/",
-        maxAge: 30 * 60, // 30 min
+        maxAge: 60 * 60, // 30 min
       });
     }
 
