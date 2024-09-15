@@ -4,8 +4,11 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./dist/tailwind.config.js",
-    "./mjs": "./dist/tailwind.config.mjs"
+    ".": {
+      "types": "./dist/tailwind.config.d.ts",
+      "import": "./dist/tailwind.config.mjs",
+      "require": "./dist/tailwind.config.js"
+    }
   },
   "scripts": {
     "dev": "tsup --watch",
