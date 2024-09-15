@@ -6,8 +6,8 @@
   "exports": {
     ".": {
       "types": "./dist/tailwind.config.d.ts",
-      "import": "./dist/tailwind.config.mjs",
-      "require": "./dist/tailwind.config.js"
+      "import": "./dist/tailwind.config.js",
+      "require": "./dist/tailwind.config.cjs"
     }
   },
   "scripts": {
