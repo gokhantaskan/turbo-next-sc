@@ -1,98 +1,89 @@
 .p-button {
-  // Default
-  --p-button-bg-color: white;
-  --p-button-fg-color: #182230;
-  --p-button-border-color: #d0d5dd;
-  --p-button-hover-bg-color: #f9fafb;
-  --p-button-focus-ring-color: #7f56d9;
-  --p-button-disabled-border-color: #e4e7ec;
-
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid;
+  border: 1px solid var(--color-gray-300);
   border-radius: var(--radius-md, 0.5rem);
   font-weight: 500;
   cursor: pointer;
 
-  background-color: var(--p-button-bg-color);
-  color: var(--p-button-fg-color);
-  border-color: var(--p-button-border-color);
+  background-color: white;
+  color: var(--color-gray-800);
 
   &:hover:not(:disabled) {
-    background-color: var(--p-button-hover-bg-color);
+    background-color: var(--color-gray-50);
   }
 
   &:focus {
     outline: 2px solid;
     outline-offset: 2px;
-    outline-color: var(--p-button-focus-ring-color);
+    outline-color: var(--color-primary);
   }
 
   &:disabled {
-    border-color: var(--p-button-disabled-border-color);
-    color: var(--color-text-disabled, #98a2b3);
+    border-color: var(--color-gray-200);
+    color: var(--color-gray-400);
     cursor: not-allowed;
   }
 
   // Variant
   &--primary {
-    --p-button-bg-color: var(--color-primary, #7f56d9);
-    --p-button-fg-color: white;
-    --p-button-border-color: transparent;
+    background-color: var(--color-primary);
+    color: white;
+    border-color: transparent;
 
-    &:hover {
-      --p-button-hover-bg-color: #6941c6;
+    &:hover:not(:disabled) {
+      background-color: var(--color-primary-700);
     }
   }
 
   &--error {
-    --p-button-bg-color: var(--color-error, #d92d20);
-    --p-button-fg-color: white;
-    --p-button-border-color: transparent;
+    background-color: var(--color-error);
+    color: white;
+    border-color: transparent;
 
-    &:hover {
-      --p-button-hover-bg-color: #b42318;
+    &:hover:not(:disabled) {
+      background-color: var(--color-error-700);
     }
 
     &:focus {
-      --p-button-focus-ring-color: #f04438;
+      outline-color: var(--color-error-500);
     }
   }
 
   &--primary,
   &--error {
     &:disabled {
-      background-color: var(--color-bg-disabled, #f2f4f7);
-      border-color: var(--color-border-disabled, #e4e7ec);
+      background-color: var(--color-gray-100);
+      border-color: var(--color-gray-200);
     }
   }
 
   // Sizes
   &--sm,
   &--md {
-    gap: var(--spacing-xs, 0.25rem);
-    font-size: var(--font-size-sm, 0.875rem);
-    line-height: var(--line-height-sm, 1.25);
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-sm);
   }
 
   &--sm {
-    padding: var(--spacing-md, 0.5rem) var(--spacing-lg, 0.75rem);
+    padding: var(--spacing-md) var(--spacing-lg);
   }
 
   &--md {
-    padding: var(--spacing-md-plus, 0.625rem) var(--spacing-lg-plus, 0.875rem);
+    padding: var(--spacing-md-plus) var(--spacing-lg-plus);
   }
 
   &--lg {
-    padding: var(--spacing-md-plus, 0.625rem) var(--spacing-xl, 1rem);
-    gap: var(--spacing-sm, 0.375rem);
-    line-height: var(--line-height-md, 1.5);
+    padding: var(--spacing-md-plus) var(--spacing-xl);
+    gap: var(--spacing-sm);
+    line-height: var(--line-height-md);
   }
 
   &--xl {
-    padding: var(--spacing-lg, 0.75rem) var(--spacing-xl-plus, 1.125rem);
-    gap: var(--spacing-md-plus, 0.625rem);
-    line-height: var(--line-height-lg, 1.75);
+    padding: var(--spacing-lg) var(--spacing-xl-plus);
+    gap: var(--spacing-md-plus);
+    line-height: var(--line-height-lg);
   }
 }

@@ -2,24 +2,21 @@
 
 import { Button } from "@repo/ui/Button";
 import { Dialog } from "@repo/ui/Dialog";
-import Logo from "assets/img/icons/next.svg";
 import Image from "next/image";
 import { useState } from "react";
+
+import { AppNavigation } from "@/components/app/AppNavigation";
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="flex flex-col min-h-lvh">
-      <header className="py-4 bg-white border-solid border-0 border-b border-gray-200">
-        <div className="container">
-          <Logo className="h-8" />
-        </div>
-      </header>
+      <AppNavigation />
       <main className="flex-1">
         <div className="container py-4">
           <div>
-            <div className="space-x-2 mt-3">
+            <div className="mt-3 space-x-2">
               <Button>Default</Button>
               <Button variant="error">Error</Button>
               <Button
@@ -61,10 +58,10 @@ export default function Home() {
           </div>
         </div>
       </main>
-      <footer className="py-4 bg-gray-950 text-white border-solid border-0 border-t border-gray-200">
+      <footer className="py-4 text-white border-0 border-t border-gray-200 border-solid bg-gray-950">
         <div className="container flex items-center gap-4">
           <a
-            className="text-gray-100 flex items-center gap-1 no-underline"
+            className="flex items-center gap-1 text-gray-100 no-underline"
             href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
             target="_blank"
             rel="noopener noreferrer"
@@ -79,7 +76,7 @@ export default function Home() {
             Learn
           </a>
           <a
-            className="text-gray-100 flex items-center gap-1 no-underline"
+            className="flex items-center gap-1 text-gray-100 no-underline"
             href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
             target="_blank"
             rel="noopener noreferrer"
@@ -94,7 +91,7 @@ export default function Home() {
             Examples
           </a>
           <a
-            className="text-gray-100 flex items-center gap-1 no-underline"
+            className="flex items-center gap-1 text-gray-100 no-underline"
             href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
             target="_blank"
             rel="noopener noreferrer"

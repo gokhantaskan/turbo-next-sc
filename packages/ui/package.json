@@ -5,8 +5,9 @@
   "type": "module",
   "exports": {
     "./variables.scss": "./src/assets/styles/variables.scss",
+    "./reset.scss": "./src/assets/styles/reset.scss",
+    "./main.scss": "./src/assets/styles/main.scss",
     "./Button": "./src/components/Button/index.tsx",
-    "./Card": "./src/components/Card/index.tsx",
     "./Dialog": "./src/components/Dialog/index.tsx",
     "./FormField": "./src/components/FormField/index.tsx"
   },
@@ -16,20 +17,33 @@
     "generate:component": "turbo gen react-component"
   },
   "devDependencies": {
+    "@repo/tailwindcss-config": "workspace:*",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "@turbo/gen": "^1.13.4",
+    "@turbo/gen": "^2.1.2",
     "@types/eslint": "^8.56.12",
     "@types/node": "^20.16.5",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "clsx": "^2.1.1",
     "eslint": "^8.57.0",
+    "next": "14.2.6",
+    "postcss": "^8.4.47",
+    "postcss-preset-env": "^10.0.3",
+    "react": "^18.3.1",
+    "react-dom": "18.3.1",
     "sass": "^1.78.0",
+    "tailwindcss": "^3.4.11",
     "typescript": "^5.6.2"
   },
   "dependencies": {
     "@headlessui/react": "^2.1.8",
-    "react": "^18.3.1"
+    "@radix-ui/react-slot": "^1.1.0"
+  },
+  "peerDependencies": {
+    "next": "14.2.6",
+    "react": "^18.3.1",
+    "react-dom": "18.3.1",
+    "tailwindcss": "^3.4.11"
   }
 }

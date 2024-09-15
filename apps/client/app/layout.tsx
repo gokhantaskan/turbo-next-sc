@@ -1,5 +1,4 @@
-import "@repo/ui/variables.scss";
-import "assets/styles/main.scss";
+import "@/assets/styles/main.scss";
 
 import type { Metadata } from "next";
 import localFont from "next/font/local";

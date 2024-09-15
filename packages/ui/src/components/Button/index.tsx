@@ -2,29 +2,34 @@
 
 import "./button.scss";
 
+import type { ClassValue } from "clsx";
 import clsx from "clsx";
+import type { ButtonHTMLAttributes } from "react";
 
-import { PButtonProps } from "./types.js";
+export interface PButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "className"> {
+  className?: ClassValue;
+  size?: "sm" | "md" | "lg" | "xl";
+  variant?: "primary" | "error";
+  type?: "submit" | "button";
+}
 
-export const Button: React.FC<PButtonProps> = ({
+export const Button = ({
   children,
   className,
-  onClick,
   size = "md",
-  variant = "default",
+  variant,
   type = "button",
   ...rest
-}) => {
+}: PButtonProps): JSX.Element => {
   return (
     <button
       className={clsx(
         "p-button",
         `p-button--${size}`,
-        variant !== "default" ? `p-button--${variant}` : "",
+        variant && `p-button--${variant}`,
         className
       )}
       type={type}
-      onClick={onClick}
       {...rest}
     >
       {children}

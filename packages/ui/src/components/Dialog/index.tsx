@@ -1,5 +1,6 @@
 import "./dialog.scss";
 
+import type { DialogProps as HeadlessDialogProps } from "@headlessui/react";
 import {
   CloseButton,
   Description,
@@ -8,23 +9,29 @@ import {
   DialogPanel,
   DialogTitle,
 } from "@headlessui/react";
+import { ReactNode } from "react";
 
-import { PDialogProps } from "./types.js";
+export interface PDialogProps extends Omit<HeadlessDialogProps, "open" | "children"> {
+  children?: ReactNode;
+  actions?: ReactNode;
+  isOpen: boolean;
+  title?: string;
+  description?: string;
+  noBackdrop?: boolean;
+}
 
 export const Dialog = ({
   children,
   actions,
   isOpen,
-  onClose,
   title,
   description,
   noBackdrop,
   ...rest
-}: PDialogProps) => {
+}: PDialogProps): JSX.Element => {
   return (
     <HeadlessDialog
       open={isOpen}
-      onClose={onClose}
       className="p-dialog"
       as="div"
       {...rest}
