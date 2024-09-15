@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-import { ENDPOINTS } from "@/lib/constants/endpoints";
+import { ROUTE_ENDPOINTS } from "@/lib/constants/endpoints";
 
 import { SignInForm } from "./components/SignInForm";
 
@@ -15,7 +15,7 @@ export default function SignInPage() {
       </header>
       <SignInForm />
       <p className="text-sm text-center">
-        Don't have an account? <Link href={ENDPOINTS.SignUp}>Sign Up</Link>
+        Don't have an account? <Link href={ROUTE_ENDPOINTS.SignUp}>Sign Up</Link>
       </p>
     </div>
   );

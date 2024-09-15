@@ -8,7 +8,7 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { ENDPOINTS } from "@/lib/constants/endpoints";
+import { ROUTE_ENDPOINTS } from "@/lib/constants/endpoints";
 
 const ForgotPasswordFormSchema = z.object({
   email: z.string().email(),
@@ -62,7 +62,7 @@ export default function ForgotPasswordPage() {
       </form>
 
       <p className="text-sm text-center">
-        <Link href={ENDPOINTS.SignIn}>Back to login</Link>
+        <Link href={ROUTE_ENDPOINTS.SignIn}>Back to login</Link>
       </p>
     </div>
   );

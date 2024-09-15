@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 
-import { ENDPOINTS } from "@/lib/constants/endpoints";
+import { ROUTE_ENDPOINTS } from "@/lib/constants/endpoints";
 
 export const AppNavigation = (): JSX.Element => {
   const router = useRouter();
@@ -14,7 +14,7 @@ export const AppNavigation = (): JSX.Element => {
       <div className="container flex items-center justify-between">
         <Link
           className="inline-block"
-          href={ENDPOINTS.Home}
+          href={ROUTE_ENDPOINTS.Home}
         >
           <Logo className="h-6" />
         </Link>
@@ -24,7 +24,7 @@ export const AppNavigation = (): JSX.Element => {
             disabled={false}
             asChild
           >
-            <Link href={ENDPOINTS.SignIn}>Sign In</Link>
+            <Link href={ROUTE_ENDPOINTS.SignIn}>Sign In</Link>
           </Button>
         </div>
       </div>

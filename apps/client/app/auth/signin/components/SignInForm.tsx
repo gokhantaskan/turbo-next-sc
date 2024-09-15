@@ -8,8 +8,9 @@ import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-import { ENDPOINTS } from "@/lib/constants/endpoints";
+import { ROUTE_ENDPOINTS } from "@/lib/constants/endpoints";
 
+import { signIn } from "../actions";
 import { SignInFormSchema, type SignInFormSchemaType } from "../schema/signInSchema";
 
 export const SignInForm: React.FC = () => {
@@ -22,13 +23,9 @@ export const SignInForm: React.FC = () => {
     resolver: zodResolver(SignInFormSchema),
   });
 
-  async function onSubmit(data: SignInFormSchemaType) {
-    console.log(data);
-  }
-
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(signIn)}
       className="space-y-4"
       noValidate
     >
@@ -59,7 +56,7 @@ export const SignInForm: React.FC = () => {
         />
         <Link
           className="absolute top-0 right-0 text-sm"
-          href={ENDPOINTS.ForgotPassword}
+          href={ROUTE_ENDPOINTS.ForgotPassword}
         >
           Forgot password?
         </Link>
