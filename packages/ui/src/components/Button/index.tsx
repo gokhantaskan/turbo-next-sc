@@ -11,6 +11,7 @@ export interface PButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: "sm" | "md" | "lg" | "xl";
   variant?: "primary" | "error";
   type?: "submit" | "button";
+  loading?: boolean;
 }
 
 export const Button = ({
@@ -20,6 +21,8 @@ export const Button = ({
   size = "md",
   variant,
   type = "button",
+  disabled,
+  loading,
   ...rest
 }: PButtonProps): JSX.Element => {
   const Comp = asChild ? Slot : "button";
@@ -30,9 +33,11 @@ export const Button = ({
         "p-button",
         `p-button--${size}`,
         variant && `p-button--${variant}`,
+        loading && `p-button--${loading}`,
         className
       )}
       type={type}
+      disabled={disabled || loading}
       {...rest}
     >
       {children}

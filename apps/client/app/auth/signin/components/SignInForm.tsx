@@ -2,19 +2,25 @@
 
 import { Checkbox, Field, Input, Label } from "@headlessui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Alert } from "@repo/ui/Alert";
 import { Button } from "@repo/ui/Button";
 import { FormField } from "@repo/ui/FormField";
+import Warning from "assets/img/icons/warning.svg";
 import Link from "next/link";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { type SubmitHandler, useForm } from "react-hook-form";
 
 import { ROUTE_ENDPOINTS } from "@/lib/constants/endpoints";
+import { CustomError } from "@/lib/types/globals";
 
 import { signIn } from "../actions";
 import { SignInFormSchema, type SignInFormSchemaType } from "../schema/signInSchema";
 
 export const SignInForm: React.FC = () => {
   const [rememberMe, setRememberMe] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
   const {
     register,
     handleSubmit,
@@ -23,12 +29,41 @@ export const SignInForm: React.FC = () => {
     resolver: zodResolver(SignInFormSchema),
   });
 
+  const onSubmit: SubmitHandler<SignInFormSchemaType> = async data => {
+    setError(null);
+    setLoading(true);
+
+    try {
+      await signIn(data);
+    } catch (error) {
+      console.log(error);
+      if (error instanceof Error) {
+        setError(error.message);
+        return;
+      }
+
+      setError((error as CustomError).data.message);
+    }
+
+    setLoading(false);
+  };
+
   return (
     <form
-      onSubmit={handleSubmit(signIn)}
+      onSubmit={handleSubmit(onSubmit)}
       className="space-y-4"
       noValidate
     >
+      {error && (
+        <div>
+          <Alert
+            variant="error"
+            title="Error"
+            description={error}
+            icon={<Warning className="text-error" />}
+          />
+        </div>
+      )}
       <FormField
         required
         label="Email"
@@ -87,6 +122,7 @@ export const SignInForm: React.FC = () => {
         className="w-full"
         variant="primary"
         type="submit"
+        loading={loading}
       >
         Login
       </Button>

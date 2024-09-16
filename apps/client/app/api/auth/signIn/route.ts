@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 
+import { type CustomError } from "@/lib/types/globals";
 import { User } from "@/lib/types/user";
 
 type AuthUser = User & {
@@ -23,10 +24,15 @@ export async function POST(request: Request) {
     const data = await response.json();
 
     if (!response.ok) {
-      return NextResponse.json(
-        { error: data.message || "Login failed" },
-        { status: response.status }
-      );
+      console.log("Response is not ok!");
+
+      const error: CustomError = {
+        status: response.status,
+        statusText: response.statusText,
+        data: data,
+      };
+
+      return NextResponse.json(error, { status: response.status, statusText: response.statusText });
     }
 
     // Extract user data, excluding tokens

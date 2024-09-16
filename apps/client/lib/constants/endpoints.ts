@@ -3,8 +3,8 @@ export const ROUTE_ENDPOINTS = {
   SignIn: "/auth/signin",
   SignUp: "/auth/signup",
   ForgotPassword: "/auth/forgot-password",
-};
+} as const;
 
 export const API_ENDPOINTS = {
-  SignIn: "/api/auth/signIn",
-};
+  SignIn: "/api/auth/signin",
+} as const;

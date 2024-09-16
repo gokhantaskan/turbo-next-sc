@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-catch */
 import { API_ENDPOINTS } from "@/lib/constants/endpoints";
 import { User } from "@/lib/types/user";
 
@@ -11,9 +12,14 @@ export async function signIn({ email, password }: SignInFormSchemaType): Promise
       body: JSON.stringify({ email, password }),
     });
 
-    return await response.json();
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw data;
+    }
+
+    return data;
   } catch (error) {
-    console.error("Login error:", error);
     throw error;
   }
 }

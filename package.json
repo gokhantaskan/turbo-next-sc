@@ -9,7 +9,7 @@
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix",
     "lint:root": "eslint \"*.{js,cjs,mjs,ts}\" --fix",
-    "format": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json}\"  -l -u",
+    "format": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json,svg}\"  -l -u",
     "lf": "pnpm lint:fix && pnpm format",
     "type-check": "turbo type-check",
     "clean": "rimraf --glob **/dist **/.next **/next-env.d.ts **/.turbo **/.output **/node_modules/.vite **/node_modules/.cache **/inspect",
