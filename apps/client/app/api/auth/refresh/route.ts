@@ -35,8 +35,8 @@ export async function POST() {
     }
 
     const res = NextResponse.json(null, { status: 201 });
-
     const setCookieString = response.headers.getSetCookie();
+
     splitSetCookieString(setCookieString).forEach(cookie => {
       res.headers.append("Set-Cookie", cookie);
     });

@@ -1,3 +1,4 @@
+import { serialize, splitSetCookieString } from "cookie-es";
 import { NextResponse } from "next/server";
 
 import { type CustomError } from "@/lib/types/globals";
@@ -34,26 +35,24 @@ export async function POST(request: Request) {
     }
 
     // Extract user data, excluding tokens
-    const { token, refreshToken, ...user }: AuthUser = data;
-    const res = NextResponse.json(user, { status: 200 });
+    const { token: _at, refreshToken: _rt, ...user }: AuthUser = data;
 
-    res.cookies.set("accessToken", token, {
+    const res = NextResponse.json(user, { status: 200 });
+    const setCookieString = response.headers.getSetCookie();
+
+    splitSetCookieString(setCookieString).forEach(cookie => {
+      res.headers.append("Set-Cookie", cookie);
+    });
+
+    const sessionCookie = serialize("session", JSON.stringify(user), {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
       path: "/",
-      maxAge: 3 * 60, // 3 min
+      maxAge: Number(process.env.NEXT_RTE),
     });
 
-    if (refreshToken) {
-      res.cookies.set("refreshToken", refreshToken, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "strict",
-        path: "/",
-        maxAge: 60 * 60, // 1hr
-      });
-    }
+    res.headers.append("Set-Cookie", sessionCookie);
 
     return res;
   } catch (error) {
