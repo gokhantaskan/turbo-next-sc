@@ -15,6 +15,17 @@ module.exports = {
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
     "prefer-const": "error",
+    quotes: ["error", "double", { avoidEscape: true }],
+    "no-unused-vars": [
+      "error",
+      {
+        vars: "all",
+        args: "after-used",
+        varsIgnorePattern: "^_", // Ignore unused variables starting with _
+        argsIgnorePattern: "^_", // Ignore unused arguments starting with _
+        caughtErrors: "none",
+      },
+    ],
   },
   parserOptions: {
     sourceType: "module",
