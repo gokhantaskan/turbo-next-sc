@@ -12,7 +12,8 @@
   },
   "scripts": {
     "dev": "tsup --watch",
-    "build": "tsup"
+    "build": "tsup",
+    "postinstall": "tsup"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",

@@ -40,11 +40,9 @@ export async function middleware(request: NextRequest) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           refreshToken: cookieRefreshToken,
-          expiresInMins: 3,
+          expiresInMins: Number(process.env.NEXT_RTE),
         }),
       });
-
-      console.log(await refreshResponse.json());
 
       // Create a new response to continue the request
       const res = NextResponse.next();

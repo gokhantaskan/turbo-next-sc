@@ -2,8 +2,8 @@
 
 import { Input } from "@headlessui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@repo/ui/Button";
-import { FormField } from "@repo/ui/FormField";
+import { Button } from "@ui/components/Button";
+import { FormField } from "@ui/components/FormField";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { z } from "zod";

@@ -2,9 +2,9 @@
 
 import { Checkbox, Field, Input, Label } from "@headlessui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Alert } from "@repo/ui/Alert";
-import { Button } from "@repo/ui/Button";
-import { FormField } from "@repo/ui/FormField";
+import { Alert } from "@ui/components/Alert";
+import { Button } from "@ui/components/Button";
+import { FormField } from "@ui/components/FormField";
 import Warning from "assets/img/icons/warning.svg";
 import Link from "next/link";
 import { useRouter } from "next/navigation";

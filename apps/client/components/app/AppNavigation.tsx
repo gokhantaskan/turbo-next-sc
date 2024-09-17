@@ -1,4 +1,4 @@
-import { Button } from "@repo/ui/Button";
+import { Button } from "@ui/components/Button";
 import Logo from "assets/img/icons/next.svg";
 import Link from "next/link";
 

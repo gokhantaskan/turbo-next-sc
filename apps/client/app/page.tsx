@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@repo/ui/Button";
-import { Dialog } from "@repo/ui/Dialog";
+import { Button } from "@ui/components/Button";
+import { Dialog } from "@ui/components/Dialog";
 import Image from "next/image";
 import { useState } from "react";
 

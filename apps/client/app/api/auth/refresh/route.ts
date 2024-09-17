@@ -1,3 +1,4 @@
+import { splitSetCookieString } from "cookie-es";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
@@ -14,7 +15,7 @@ export async function POST() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         refreshToken: cookieRefreshToken,
-        expiresInMins: 60,
+        expiresInMins: Number(process.env.NEXT_RTE),
       }),
     });
 
@@ -33,28 +34,17 @@ export async function POST() {
       });
     }
 
-    const { token, refreshToken } = data;
-    const res = NextResponse.json(null, { status: 200 });
+    const res = NextResponse.json(null, { status: 201 });
 
-    res.cookies.set("accessToken", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
-      path: "/",
-      maxAge: 3 * 60, // 3 min
-    });
-
-    res.cookies.set("refreshToken", refreshToken, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
-      path: "/",
-      maxAge: 60 * 60, // 1hr
+    const setCookieString = response.headers.getSetCookie();
+    splitSetCookieString(setCookieString).forEach(cookie => {
+      console.log(cookie);
+      res.headers.append("Set-Cookie", cookie);
     });
 
     return res;
   } catch (error) {
-    console.error("Login error:", error);
+    console.error("Refresh error:", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
