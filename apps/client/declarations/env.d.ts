@@ -4,7 +4,7 @@ declare global {
     interface ProcessEnv {
       NEXT_PUBLIC_API_PATH: string;
       NEXT_RTE: string;
-      // Add other environment variables here
+      NEXT_SESSION_KEY: string;
     }
   }
 }

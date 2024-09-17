@@ -9,7 +9,7 @@
     "dev": {
       "cache": false,
       "persistent": true,
-      "env": ["NEXT_PUBLIC_API_PATH", "NEXT_RTE"],
+      "env": ["NEXT_PUBLIC_API_PATH", "NEXT_SESSION_KEY", "NEXT_RTE"],
       "inputs": [
         "$TURBO_DEFAULT$",
         ".env.development.local",

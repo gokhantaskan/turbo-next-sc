@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 
 import { type CustomError } from "@/lib/schema/errorSchema";
 import { User } from "@/lib/types/user";
+import { encrypt } from "@/lib/utils/server/auth";
 
 type AuthUser = User & {
   token: string;
@@ -44,7 +45,7 @@ export async function POST(request: Request) {
       res.headers.append("Set-Cookie", cookie);
     });
 
-    const sessionCookie = serialize("session", JSON.stringify(user), {
+    const sessionCookie = serialize("session", await encrypt(user), {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
