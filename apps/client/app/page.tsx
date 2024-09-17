@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 import { AppNavigation } from "@/components/app/AppNavigation";
+import { refresh } from "@/lib/utils/actions/auth";
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,14 +19,19 @@ export default function Home() {
           <div>
             <div className="mt-3 space-x-2">
               <Button>Default</Button>
-              <Button variant="error">Error</Button>
+              <Button
+                variant="error"
+                onClick={refresh}
+              >
+                Refresh Token
+              </Button>
               <Button
                 variant="primary"
                 onClick={() => {
                   setIsOpen(true);
                 }}
               >
-                Primary
+                Open Modal
               </Button>
             </div>
             <Dialog
