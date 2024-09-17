@@ -31,7 +31,9 @@ export const Alert = ({
     }
   }
 
-  if (!isVisible) return null;
+  if (!isVisible) {
+    return null;
+  }
 
   return (
     <div className={clsx("p-alert", variant && `p-alert--${variant}`)}>

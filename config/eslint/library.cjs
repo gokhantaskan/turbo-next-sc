@@ -11,6 +11,7 @@ module.exports = {
     "simple-import-sort/exports": "error",
     "prefer-const": "error",
     quotes: ["error", "double", { avoidEscape: true }],
+    curly: ["error", "all"],
     "no-unused-vars": [
       "error",
       {
