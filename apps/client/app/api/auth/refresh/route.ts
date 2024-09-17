@@ -38,7 +38,6 @@ export async function POST() {
 
     const setCookieString = response.headers.getSetCookie();
     splitSetCookieString(setCookieString).forEach(cookie => {
-      console.log(cookie);
       res.headers.append("Set-Cookie", cookie);
     });
 

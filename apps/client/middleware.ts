@@ -49,7 +49,6 @@ export async function middleware(request: NextRequest) {
 
       const setCookieString = refreshResponse.headers.getSetCookie();
       splitSetCookieString(setCookieString).forEach(cookie => {
-        console.log(cookie);
         res.headers.append("Set-Cookie", cookie);
       });
 

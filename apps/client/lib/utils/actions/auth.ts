@@ -11,9 +11,7 @@ export async function signIn({ email, password }: SignInFormSchemaType): Promise
       body: JSON.stringify({ email, password }),
     });
 
-    console.log("signin getSetCookie", response.headers.getSetCookie());
     const data = await response.json();
-    console.log("signin data", data);
 
     if (!response.ok) {
       throw data;
