@@ -25,10 +25,6 @@ export async function signIn({ email, password }: SignInFormSchemaType): Promise
   }
 }
 
-/**
- * @param url Additional URL for server events
- * @returns null
- */
 export async function refresh(): Promise<void> {
   try {
     const response = await fetch(API_ENDPOINTS.RefreshAuthToken, {
