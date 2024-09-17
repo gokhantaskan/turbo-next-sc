@@ -4,7 +4,15 @@
   "extends": ["./base.json"],
   "compilerOptions": {
     "strict": true,
+    "strictNullChecks": true,
     "noUncheckedIndexedAccess": true,
-    "noImplicitOverride": true
+    "noUnusedParameters": true,
+    "noImplicitOverride": true,
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true
   }
 }
