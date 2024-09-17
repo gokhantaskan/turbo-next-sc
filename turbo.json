@@ -1,6 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalEnv": ["NEXT_PUBLIC_API_ENDPOINT", "NODE_ENV"],
+  "globalEnv": ["NEXT_PUBLIC_API_PATH", "NODE_ENV"],
   "ui": "stream",
   "tasks": {
     "transit": {
@@ -23,6 +23,9 @@
     "lint:root": {},
     "type-check": {},
     "format": {},
-    "lf": {}
+    "lf": {},
+    "clean": {
+      "cache": false
+    }
   }
 }

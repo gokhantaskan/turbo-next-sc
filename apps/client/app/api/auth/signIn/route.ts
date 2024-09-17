@@ -12,7 +12,7 @@ export async function POST(request: Request) {
   try {
     const { email, password } = await request.json();
 
-    const response = await fetch("https://dummyjson.com/auth/login", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_PATH}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -24,8 +24,6 @@ export async function POST(request: Request) {
     const data = await response.json();
 
     if (!response.ok) {
-      console.log("Response is not ok!");
-
       const error: CustomError = {
         status: response.status,
         statusText: response.statusText,
@@ -53,7 +51,7 @@ export async function POST(request: Request) {
         secure: process.env.NODE_ENV === "production",
         sameSite: "strict",
         path: "/",
-        maxAge: 60 * 60, // 30 min
+        maxAge: 60 * 60, // 1hr
       });
     }
 

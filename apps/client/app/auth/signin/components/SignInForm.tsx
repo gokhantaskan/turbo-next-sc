@@ -7,16 +7,18 @@ import { Button } from "@repo/ui/Button";
 import { FormField } from "@repo/ui/FormField";
 import Warning from "assets/img/icons/warning.svg";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
 
 import { ROUTE_ENDPOINTS } from "@/lib/constants/endpoints";
+import { SignInFormSchema, type SignInFormSchemaType } from "@/lib/schema/signInSchema";
 import { CustomError } from "@/lib/types/globals";
-
-import { signIn } from "../actions";
-import { SignInFormSchema, type SignInFormSchemaType } from "../schema/signInSchema";
+import { signIn } from "@/lib/utils/actions/auth";
 
 export const SignInForm: React.FC = () => {
+  const router = useRouter();
+
   const [rememberMe, setRememberMe] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -35,8 +37,10 @@ export const SignInForm: React.FC = () => {
 
     try {
       await signIn(data);
+      router.push(ROUTE_ENDPOINTS.Home);
     } catch (error) {
-      console.log(error);
+      console.error(error);
+
       if (error instanceof Error) {
         setError(error.message);
         return;
