@@ -1,7 +1,7 @@
 import { serialize, splitSetCookieString } from "cookie-es";
 import { NextResponse } from "next/server";
 
-import { type CustomError } from "@/lib/types/globals";
+import { type CustomError } from "@/lib/schema/errorSchema";
 import { User } from "@/lib/types/user";
 
 type AuthUser = User & {

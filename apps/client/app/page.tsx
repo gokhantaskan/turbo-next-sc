@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 import { AppNavigation } from "@/components/app/AppNavigation";
-import { refresh } from "@/lib/utils/actions/auth";
+import { refresh } from "@/lib/services/auth";
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);

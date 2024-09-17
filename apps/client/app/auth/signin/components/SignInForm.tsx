@@ -12,9 +12,9 @@ import { useState } from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
 
 import { ROUTE_ENDPOINTS } from "@/lib/constants/endpoints";
+import { CustomError } from "@/lib/schema/errorSchema";
 import { SignInFormSchema, type SignInFormSchemaType } from "@/lib/schema/signInSchema";
-import { CustomError } from "@/lib/types/globals";
-import { signIn } from "@/lib/utils/actions/auth";
+import { signIn } from "@/lib/services/auth";
 
 export const SignInForm: React.FC = () => {
   const router = useRouter();

@@ -2,11 +2,10 @@ import { splitSetCookieString } from "cookie-es";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
-import { type CustomError } from "@/lib/types/globals";
+import { type CustomError } from "@/lib/schema/errorSchema";
 
 export async function POST() {
   try {
-    // If cookies can get
     const cookieStore = cookies();
     const cookieRefreshToken = cookieStore.get("refreshToken")?.value;
 
