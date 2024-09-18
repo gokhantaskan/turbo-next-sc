@@ -23,6 +23,25 @@ export async function signIn({ email, password }: SignInFormSchemaType): Promise
   }
 }
 
+export async function signOut(): Promise<void> {
+  try {
+    const response = await fetch(API_ENDPOINTS.SignOut, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw data;
+    }
+
+    return;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function refresh(): Promise<void> {
   try {
     const response = await fetch(API_ENDPOINTS.RefreshAuthToken, {

@@ -1,13 +1,14 @@
 import { Button } from "@ui/components/Button";
 import Logo from "assets/img/icons/next.svg";
+import { cookies } from "next/headers";
 import Link from "next/link";
 
 import { ROUTE_ENDPOINTS } from "@/lib/constants/endpoints";
+import { signOut } from "@/lib/services/auth";
 import { getSession } from "@/lib/utils/server/auth";
 
 export const AppNavigation = async (): Promise<JSX.Element> => {
   const session = await getSession();
-  const username = session?.username;
 
   return (
     <header className="py-4 bg-white border-b">
@@ -21,8 +22,19 @@ export const AppNavigation = async (): Promise<JSX.Element> => {
         <div>
           {(
             <div className="flex items-center gap-2">
-              {username}
-              <Button size="sm">Logout</Button>
+              <span>{`${session?.firstName} ${session?.lastName.substring(0, 1)}.`}</span>
+              <Button
+                size="sm"
+                onClick={async () => {
+                  "use server";
+                  // await signOut();
+                  ["accessToken", "refreshToken", "session"].forEach(name => {
+                    cookies().set(name, "", { maxAge: 0 });
+                  });
+                }}
+              >
+                Logout
+              </Button>
             </div>
           ) || (
             <Button

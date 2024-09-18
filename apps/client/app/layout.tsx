@@ -3,8 +3,6 @@ import "@/assets/styles/main.scss";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 
-import { getSession } from "@/lib/utils/server/auth";
-
 const geistSans = localFont({
   src: "../assets/fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -25,9 +23,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await getSession();
-  console.log(session);
-
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>{children}</body>
