@@ -1,11 +1,11 @@
 import { Button } from "@ui/components/Button";
 import Logo from "assets/img/icons/next.svg";
-import { cookies } from "next/headers";
 import Link from "next/link";
 
 import { ROUTE_ENDPOINTS } from "@/lib/constants/endpoints";
-import { signOut } from "@/lib/services/auth";
 import { getSession } from "@/lib/utils/server/auth";
+
+import { LogoutButton } from "./LogoutButton";
 
 export const AppNavigation = async (): Promise<JSX.Element> => {
   const session = await getSession();
@@ -23,18 +23,7 @@ export const AppNavigation = async (): Promise<JSX.Element> => {
           {(
             <div className="flex items-center gap-2">
               <span>{`${session?.firstName} ${session?.lastName.substring(0, 1)}.`}</span>
-              <Button
-                size="sm"
-                onClick={async () => {
-                  "use server";
-                  // await signOut();
-                  ["accessToken", "refreshToken", "session"].forEach(name => {
-                    cookies().set(name, "", { maxAge: 0 });
-                  });
-                }}
-              >
-                Logout
-              </Button>
+              <LogoutButton />
             </div>
           ) || (
             <Button
