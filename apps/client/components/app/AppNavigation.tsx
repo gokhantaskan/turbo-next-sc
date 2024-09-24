@@ -20,12 +20,14 @@ export const AppNavigation = async (): Promise<JSX.Element> => {
           <Logo className="h-6" />
         </Link>
         <div>
-          {(
+          {session ? (
             <div className="flex items-center gap-2">
-              <span>{`${session?.firstName} ${session?.lastName.substring(0, 1)}.`}</span>
+              <Link
+                href={ROUTE_ENDPOINTS.Profile(session.username)}
+              >{`${session.firstName} ${session.lastName.substring(0, 1)}.`}</Link>
               <LogoutButton />
             </div>
-          ) || (
+          ) : (
             <Button
               size="sm"
               disabled={false}

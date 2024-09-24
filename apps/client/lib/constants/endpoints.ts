@@ -1,5 +1,6 @@
 export const ROUTE_ENDPOINTS = {
   Home: "/",
+  Profile: (username: string) => `/u/${username}`,
   SignIn: "/auth/signin",
   SignUp: "/auth/signup",
   SignOut: "/auth/signout",

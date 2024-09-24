@@ -7,7 +7,7 @@
     "dev": "turbo dev",
     "start": "turbo start",
     "lint": "turbo lint",
-    "lint:fix": "turbo lint:fix",
+    "lint:fix": "turbo lint:fix lint:root",
     "lint:root": "eslint \"*.{js,cjs,mjs,ts}\" --fix",
     "format": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json,svg}\"  -l -u",
     "lf": "pnpm lint:fix && pnpm format",

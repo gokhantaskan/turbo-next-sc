@@ -7,6 +7,7 @@ export default async function ProfilePage({ params }: { params: { username: stri
 
   const data = await response.json();
 
+  // User not found
   if (!response.ok || data.users?.length === 0) {
     return <ProfileNotFound />;
   }
