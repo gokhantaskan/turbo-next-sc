@@ -6,7 +6,7 @@ import { User } from "@/lib/types/user";
 import { encrypt } from "@/lib/utils/server/auth";
 
 type AuthUser = User & {
-  token: string;
+  accessToken: string;
   refreshToken: string;
 };
 
@@ -36,7 +36,7 @@ export async function POST(request: Request) {
     }
 
     // Extract user data, excluding tokens
-    const { token: _at, refreshToken: _rt, ...user }: AuthUser = data;
+    const { accessToken: _at, refreshToken: _rt, ...user }: AuthUser = data;
 
     const res = NextResponse.json(user, { status: 200 });
     const setCookieString = response.headers.getSetCookie();
